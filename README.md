@@ -11,7 +11,7 @@ LongTEQuant is a comprehensive tool for identifying and quantifying transposable
 - **Transcript Classification**: Automatically classifies transcripts into Gene-alone, TE-alone, or TE-Gene categories
 - **Flexible Analysis**: It is recommended to use miniQuant for quantification, but also supports various quantification tools.
 - **Multiple Output Formats**: Generates detailed TSV files with comprehensive TE and transcript information
-
+ ![image](https://github.com/gaoshiwen/LongTEQuant/blob/main/LongTEQuant.png)
 ## Installation
 
 Create conda environment:
