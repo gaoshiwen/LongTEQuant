@@ -81,9 +81,9 @@ python integrated_quantification_sam_only.py \
 - `-g, --gtf-file` (required): Transcript GTF annotation file
 - `-t, --te-gtf` (required): TE GTF annotation file (from Step 1)
 - `-l, --long-reads` (required): Long-read alignment SAM file
-- `-s, --short-reads` (optional): Short-read alignment SAM file for hybrid analysis
+- `-s, --short-reads` (optional): Short-read alignment SAM file for hybrid analysis 
 - `-o, --output` (required): Output directory path
-- `--skip-quantification` (optional): Skip miniQuant quantification, perform TE analysis only
+- `--skip-quantification` (optional): Skip miniQuant quantification, perform TE analysis only, tpm of all transcripts wlii be 1
 - `--miniquant-params` (optional): Additional miniQuant parameters
 - `--te-overlap-threshold` (optional): Minimum TE overlap (bp) for classification (default: 10bp)
 - `--te-ratio-threshold` (optional): TE proportion threshold for TE-alone classification (default: 80.0%)
@@ -92,6 +92,11 @@ python integrated_quantification_sam_only.py \
 **Output Files Generated:**
 - `transcript_quantification_with_TE.tsv`: Complete transcript quantification with TE overlap information
 - `TE_initiated_transcripts.tsv`: Detailed information for TE-associated transcripts
+
+**Notice:**
+- if you want to use miniQuant in hybrid mode
+- cd /project/liaojianshu/miniquant_TE/miniQuant_old
+- wget -qO- https://miniquant.s3.us-east-2.amazonaws.com/pretrained_models.tar.gz | tar xvz
 
 ---
 
@@ -178,8 +183,8 @@ This is the primary output of the quantification step. Each row corresponds to a
 - `TE_class`: class of the dominant TE (LINE, SINE, LTR, DNA, etc.) or blank if none
 - `first_exon_TE_proportion`: fraction of first exon overlapped by any TE (0–100)
 - `total_transcript_TE_proportion`: fraction of whole transcript overlapped by TE
-- `tss_200_overlap`: number of base pairs of TE overlap within 200 bp of the transcription start site
-- `tes_200_overlap`: number of base pairs of TE overlap within 200 bp of the transcription end site
+- `tss_200_overlap`: number of base pairs of TE overlap within 200 bp after the transcription start site
+- `tes_200_overlap`: number of base pairs of TE overlap within 200 bp before the transcription end site
 - `transcript_classification`: one of **Gene-alone**, **TE-alone**, **TE-Gene**
 - `transcript_sub_classification`: further TE-Gene subtypes (TSS, TES, TE-exonization, etc.)
 - `locus`: coordinate of the dominant TE locus (if any)
@@ -229,6 +234,3 @@ Sub-classifications (TSS, TES, TE-exonization) are recorded in the output files 
 
 #### `environment.yml`
 Conda environment specification with all required dependencies. Contains all Python packages and dependencies required to run LongTEQuant.
-=======
-# LongTEQuant
-LongTEQuant is a comprehensive tool for identifying and quantifying transposable element (TE)–derived or TE-associated transcripts from long-read RNA-seq data. It integrates transcript abundance estimation with TE-overlap analysis to classify transcripts by their relationship to TEs, including Gene-alone, TE-alone, and TE–Gene chimeric transcripts.
