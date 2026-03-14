@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # LongTEQuant: Long-read Transposable Element Quantification
 
 ## About
@@ -233,4 +232,3 @@ Conda environment specification with all required dependencies. Contains all Pyt
 =======
 # LongTEQuant
 LongTEQuant is a comprehensive tool for identifying and quantifying transposable element (TE)–derived or TE-associated transcripts from long-read RNA-seq data. It integrates transcript abundance estimation with TE-overlap analysis to classify transcripts by their relationship to TEs, including Gene-alone, TE-alone, and TE–Gene chimeric transcripts.
->>>>>>> eb9317650a09037a32115e25e527c014e7dab7f6
